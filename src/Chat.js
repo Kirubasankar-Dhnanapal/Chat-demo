@@ -63,6 +63,7 @@ class Chat extends Component {
             })
         }
     }
+    
 
     emojiText = (event) => {
         emojiTexts.push(event.currentTarget.innerText);
