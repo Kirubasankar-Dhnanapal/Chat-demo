@@ -1,0 +1,169 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.buttonStyle {
+  border-radius: 11px;
+  width : 75px;
+}
+
+.backButtonStyle {
+  border-radius: 11px;
+  width : 75px;
+  margin-left: '30%';
+}
+
+.cardStyle {
+  background-color : red;
+}
+
+.textAlign {
+  text-align:'center';
+}
+
+.textField {
+  margin-right: '20%';
+  width: 200,
+}
+
+.contactList {
+  position: fixed;
+    border-radius: 10px;
+    width: 9%;
+    background-color: floralwhite;
+    height: 29px;
+    display: 'flow-root';
+    top: 15%;
+    left: 5%;
+}
+
+.wholeMessageDiv {
+  position: fixed;
+    height: calc(100vh - 86px);
+    overflow: auto;
+    left: 5%;
+    top: 140px;
+    width: 13%;
+}
+
+.emojiDiv{
+  position: fixed;
+    width: 20%;
+    height: 16%;
+    background-color: beige;
+    left: 21%;
+    top: 79%;
+    cursor : pointer;
+    overflow: auto;
+}
+
+.buttonDive {
+    border-radius: 12px;
+    width: 65%;
+    
+}
+
+.avatar {
+  vertical-align: middle;
+    width: 43px;
+    height: 47px;
+    border-radius: 40%;
+}
+
+.avatarDiv {
+  position: fixed;
+    left: 95%;
+    top: 3%;
+}
+
+.MessageDiv {
+  position: fixed;
+  top: 15%;
+  left: calc(100vh - 24%);
+  overflow: auto;
+  width: 78%;
+  height: calc(100vh - 25%);
+}
+
+.WholeTextDiv {
+  position: fixed;
+  top: 92%;
+  left: calc(100vh - 24%);
+}
+
+.textAreaDiv {
+  position: fixed;
+  width: 22%;
+  border-left-style: none;
+  border-top-style: none;
+  border-bottom-style: double;
+  display: flex;
+}
+
+.buttonDiv {
+  position: fixed;
+  left: calc(100vh - 20px);
+}
+
+.wholeDiv {
+  position: relative;
+  height: 66;
+  background-color: cadetblue;
+  justify-content: center;
+  display: flex;
+  /* font-size: -webkit-xxx-large; */
+}
+
+.headerDiv {
+  position: fixed;
+  max-height: 100%;
+  top: 1%;
+  font-size: 'xx-large';
+  display: flex;
+}
+
+.cardDiv {
+  position: fixed;
+    width: 32%;
+    text-align: center;
+    font-size: 24px;
+    left: 34%;
+    top: 14%;
+    height: 72%;
+}
+
+.loginDiv {
+  position: fixed;
+    top: 28%;
+    left: 41%;
+}
