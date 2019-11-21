@@ -58,17 +58,15 @@ class Chat extends Component {
             })
         } else {
             this.setState({
-                emoji: false,
-                emojiTexts : []
+                emoji: false
             })
         }
     }
     
 
     emojiText = (event) => {
-        emojiTexts.push(event.currentTarget.innerText);
         this.setState({
-            sendText : emojiTexts
+            sendText : this.state.sendText.concat(event.currentTarget.innerText)
         })
         
     }
