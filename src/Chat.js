@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Contacts from './Contacts';
+import { Redirect } from 'react-router-dom';
 // import ChatInput from './test/ChatInput';
 // import Messages from './Messages';
 // import { connect } from 'react-redux';
@@ -13,6 +14,8 @@ class Chat extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            signoutFlag : false,
+            signOut : false,
             message : '',
             value: 7,
             emoji: false,
@@ -50,7 +53,17 @@ class Chat extends Component {
     }
 
     logOut = () => {
-        alert('Logout')
+        if(this.state.signOut !== true){
+            this.setState({
+                signOut : true,
+                signoutFlag : false
+            })
+        }else{
+            this.setState({
+                signOut : false,
+                signoutFlag : false
+            })
+        }
     }
 
     componentDidMount() {
@@ -74,15 +87,23 @@ class Chat extends Component {
         }
     }
     
-
     emojiText = (event) => {
         this.setState({
             sendText : this.state.sendText.concat(event.currentTarget.innerText)
+        })  
+    }
+
+    loginPage = (e) => {
+        e.preventDefault();
+        this.setState({
+            signoutFlag : true
         })
-        
     }
 
     render() {
+        if (this.state.signoutFlag) {
+            return <Redirect to='/login' push={true} ></Redirect>
+        }
         return (
             <div>
                 <div style={{
@@ -104,7 +125,7 @@ class Chat extends Component {
                         <img style={{
                             position: 'fixed',
                             top: 11, cursor: 'pointer'
-                        }} src="download.jpg" rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" alt="Avatar" className="avatar" onclick={this.logOut}></img>
+                        }} src="download.jpg" rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" alt="Avatar" className="avatar" onClick={this.logOut}></img>
                     </div>
                 </div>
 
@@ -131,11 +152,17 @@ class Chat extends Component {
                     ) : null}
                 </div>
 
+                {this.state.signOut=== true ? <div className='signOutDiv'><div><div style={{cursor:'pointer'}}>Settings</div><br/>
+                    <div style={{cursor:'pointer'}}>Change Password</div><br/>
+                    <button style={{cursor:'pointer'}} onClick={this.loginPage}>Signout</button><br/>
+                    </div>
+                    </div> : null}
+
 
                 {this.state.emoji === true ? <div className='emojiDiv'>{this.state.emojiS.map((res) => <span id='emojiId' onClick={this.emojiText}>{String.fromCodePoint(res)}</span>)}</div> : null}
                 <button style={{
                     position: 'fixed', left: '19%',
-                    top: '521px',
+                    top: '575px',
                     zIndex: 1,
                     borderRadius: '25px 25px 25px 25px'
                 }} onClick={this.createEmoji}>{String.fromCodePoint(0x1F601)}</button>

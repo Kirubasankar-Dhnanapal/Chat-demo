@@ -76,6 +76,17 @@
     width: 13%;
 }
 
+.signOutDiv{
+  position: fixed;
+  padding: 13px;
+    right: 3%;
+    background-color: cornflowerblue;
+    top: 11%;
+    width: calc(100vh - 450px);
+    height: 22%;
+    border-radius: 10px 0px 10px 10px;
+}
+
 .emojiDiv{
   position: fixed;
     width: 20%;
