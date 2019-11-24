@@ -13,6 +13,7 @@ class Chat extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            message : '',
             value: 7,
             emoji: false,
             emojiS: []
@@ -26,14 +27,24 @@ class Chat extends Component {
         })
     }
 
-    sendMessage = () => {
+      printHref(){
+        var hrefRegex = /(\b(https?|ftp|http|www):\/\/[-A-Z0-9+&@#\\\/%?=~_|!:,.;]*[-A-Z0-9+&@#\\\/%=~_|])/gim;
+        var a = this.state.sendText.replace(hrefRegex,'<a href="$1">$1</a>')
+        var href = a.replace(/,/g," ");
         this.setState({
-            emoji : false,
-            sendText : '',
+            hrefTag : href
         })
+      }
+
+    sendMessage = () => {
         texts['message'] = this.state.sendText;
         texts['time'] = `${new Date().getHours()}:${new Date().getMinutes()} PM`;
         messages.push(texts);
+        this.setState({
+            message : messages,
+            emoji : false
+        })
+        this.printHref();
         this.chatRef.current.focus();
         // this.props.sendMessage(Messages);
     }
@@ -113,7 +124,9 @@ class Chat extends Component {
                     width: '78%',
                     height: 'calc(100vh - 25%)'
                 }}>
-                    {messages !== '' ? messages.map((result) => <div><div style={{ display: 'flex', marginTop: 10, cursor: 'pointer' }}><img src="download.jpg" alt="Avatar" className="avatar"></img><div style={{ backgroundColor: 'bisque', borderRadius: '10px 10px 10px 10px' }}><p>{result.message}</p></div></div>
+                    {messages !== '' ? messages.map((result) => <div><div style={{ display: 'flex', marginTop: 10, cursor: 'pointer' }}><img src="download.jpg" alt="Avatar" className="avatar"></img><div style={{ backgroundColor: 'bisque', borderRadius: '10px 10px 10px 10px' }}><p>{result.message}</p>
+                    <div dangerouslySetInnerHTML={{ __html: this.state.hrefTag }}></div>
+                    </div></div>
                         <span style={{ fontSize: '12px', padding: '0px 46px 0px' }}>{result.time}</span></div>
                     ) : null}
                 </div>
