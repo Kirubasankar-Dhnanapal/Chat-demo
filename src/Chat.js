@@ -169,17 +169,10 @@ class Chat extends Component {
                 <div style={{
                     position: 'fixed',
                     top: '92%',
-                    left: 'calc(100vh - 24%)'
+                    left: '22%'
                 }}>
-                    <input type='textarea' ref={this.chatRef} style={{
-                        position: 'fixed',
-                        width: '22%',
-                        borderLeftStyle: 'none',
-                        borderTopStyle: 'none',
-                        borderBottomStyle: 'double',
-                        display: 'flex'
-                    }} placeholder='Enter your Msg' onChange={this.sendText} value={this.state.sendText} />
-                    <button style={{ position: 'fixed', left: 'calc(100vh - 20px)' }} onClick={this.sendMessage}>Send</button>
+                    <input type='textarea' ref={this.chatRef} className='textAreaDiv' placeholder='Enter your Msg' onChange={this.sendText} value={this.state.sendText} />
+                    <button className='sendButtonDiv' onClick={this.sendMessage}>Send</button>
 
 
                 </div>

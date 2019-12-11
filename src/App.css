@@ -76,6 +76,25 @@
     width: 13%;
 }
 
+.sendButtonDiv {
+  position: fixed;
+    left: 94%;
+    border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
+    outline: none;
+}
+
+.textAreaDiv{
+  position: fixed;
+  width: 71%;
+  border-left-style: none;
+  border-top-style: none;
+  border-bottom-style: groove;
+  display: flex;
+  outline: none;
+}
+
 .signOutDiv{
   position: fixed;
   padding: 13px;
@@ -101,7 +120,15 @@
 .buttonDive {
     border-radius: 12px;
     width: 65%;
+    outline: none
     
+}
+
+.searchBox{
+  border-radius: 9px 9px 9px 9px;
+    border-left-style: none;
+    border-top-style: none;
+    outline: none;
 }
 
 .avatar {
@@ -130,15 +157,6 @@
   position: fixed;
   top: 92%;
   left: calc(100vh - 24%);
-}
-
-.textAreaDiv {
-  position: fixed;
-  width: 22%;
-  border-left-style: none;
-  border-top-style: none;
-  border-bottom-style: double;
-  display: flex;
 }
 
 .buttonDiv {

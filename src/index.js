@@ -11,10 +11,11 @@ import DetailPage from './DetailPage';
 import Kiruba from './test/Kiruba';
 import Reducers from './Reducers';
 import LoginPage from './LoginPage';
+import CheckCounter from './CheckCounter';
 
 const store = createStore(Reducers);
 
-ReactDOM.render(<Provider store={store}><Routes/></Provider>, document.getElementById('root'));
+ReactDOM.render(<Routes/>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
