@@ -11,7 +11,7 @@ class Contacts extends Component {
 
     searchUser = (e) => {
         if(e.target.value){
-        let searchResults = this.state.names.filter(user=>user.search(e.target.value)>=0).map(re=>re);
+        let searchResults = this.state.names.filter(user=>user.toLowerCase().search(e.target.value)>=0).map(re=>re);
         this.setState({
             names : searchResults
         })
@@ -26,8 +26,8 @@ class Contacts extends Component {
         return (
             <div>
                 
-                <div style={{textAlign:'center',fontSize: 23}}>Contact List</div>
-                <div style={{position: 'fixed',left: '4%', marginTop: '1%',width:'calc(100vh - 35%)'}}><input type='text' className='searchBox' placeholder='search' onChange={this.searchUser}></input></div>
+                <div style={{textAlign:'center',fontSize: 23}}>Search Your Friend</div>
+                <div style={{position: 'fixed',left: '4%', marginTop: '1%',width:'calc(100vh - 35%)'}}><input type='text' className='searchBox' onChange={this.searchUser}></input></div>
                 <div className='wholeMessageDiv'>{
                     this.state.names.map(re=> <div style={{position: 'relative',marginTop: '5px'}}><button className='buttonDive'>{re}</button></div> )
                 }

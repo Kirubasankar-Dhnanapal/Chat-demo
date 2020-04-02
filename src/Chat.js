@@ -14,9 +14,10 @@ class Chat extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            signoutFlag : false,
-            signOut : false,
-            message : '',
+            data: '',
+            signoutFlag: false,
+            signOut: false,
+            message: '',
             value: 7,
             emoji: false,
             emojiS: []
@@ -30,22 +31,22 @@ class Chat extends Component {
         })
     }
 
-      printHref(){
+    printHref() {
         var hrefRegex = /(\b(https?|ftp|http|www):\/\/[-A-Z0-9+&@#\\\/%?=~_|!:,.;]*[-A-Z0-9+&@#\\\/%=~_|])/gim;
-        var a = this.state.sendText.replace(hrefRegex,'<a href="$1">$1</a>')
-        var href = a.replace(/,/g," ");
+        var a = this.state.sendText.replace(hrefRegex, '<a href="$1">$1</a>')
+        var href = a.replace(/,/g, " ");
         this.setState({
-            hrefTag : href
+            hrefTag: href
         })
-      }
+    }
 
     sendMessage = () => {
         texts['message'] = this.state.sendText;
         texts['time'] = `${new Date().getHours()}:${new Date().getMinutes()} PM`;
         messages.push(texts);
         this.setState({
-            message : messages,
-            emoji : false
+            message: messages,
+            emoji: false
         })
         this.printHref();
         this.chatRef.current.focus();
@@ -53,20 +54,26 @@ class Chat extends Component {
     }
 
     logOut = () => {
-        if(this.state.signOut !== true){
+        if (this.state.signOut !== true) {
             this.setState({
-                signOut : true,
-                signoutFlag : false
+                signOut: true,
+                signoutFlag: false
             })
-        }else{
+        } else {
             this.setState({
-                signOut : false,
-                signoutFlag : false
+                signOut: false,
+                signoutFlag: false
             })
         }
     }
 
     componentDidMount() {
+        fetch('https://jsonplaceholder.typicode.com/posts').then((result) => result.json()).then((re) => this.setState({
+            data: re
+        }, () => {
+            console.log(this.state.data.map((Id) => Id.id))
+        }))
+
         for (var i = 0; i < 45; i++) {
             result.push(`0x1F6${i}`);
             this.setState({
@@ -86,17 +93,17 @@ class Chat extends Component {
             })
         }
     }
-    
+
     emojiText = (event) => {
         this.setState({
-            sendText : this.state.sendText.concat(event.currentTarget.innerText)
-        })  
+            sendText: this.state.sendText.concat(event.currentTarget.innerText)
+        })
     }
 
     loginPage = (e) => {
         e.preventDefault();
         this.setState({
-            signoutFlag : true
+            signoutFlag: true
         })
     }
 
@@ -109,7 +116,7 @@ class Chat extends Component {
                 <div style={{
                     position: 'relative',
                     height: 66,
-                    backgroundColor: 'cadetblue',
+                    backgroundColor: '#2b8ceb',
                     justifyContent: 'center',
                     display: 'flex',
                     fontSize: '-webkit' - 'xxx' - 'large'
@@ -125,14 +132,15 @@ class Chat extends Component {
                         <img style={{
                             position: 'fixed',
                             top: 11, cursor: 'pointer'
-                        }} src="download.jpg" rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" alt="Avatar" className="avatar" onClick={this.logOut}></img>
+                        }}
+                            src="file:///F:/Kiruba%20SDCard/Removable%20Disk/DCIM/Camera/IMG_20151229_182829.jpg" href="file:///F:/Kiruba%20SDCard/Removable%20Disk/DCIM/Camera/IMG_20151229_182829.jpg" className="avatar" onClick={this.logOut}></img>
                     </div>
                 </div>
 
                 <div style={{
                     position: 'fixed',
                     width: '20%',
-                    backgroundColor: 'lightblue',
+                    backgroundColor: 'yellowgreen',
                     height: 559
                 }}>
                     <Contacts></Contacts>
@@ -145,37 +153,39 @@ class Chat extends Component {
                     width: '78%',
                     height: 'calc(100vh - 25%)'
                 }}>
-                    {messages !== '' ? messages.map((result) => <div><div style={{ display: 'flex', marginTop: 10, cursor: 'pointer' }}><img src="download.jpg" alt="Avatar" className="avatar"></img><div style={{ backgroundColor: 'bisque', borderRadius: '10px 10px 10px 10px' }}><p>{result.message}</p>
-                    <div dangerouslySetInnerHTML={{ __html: this.state.hrefTag }}></div>
+                    {messages !== '' ? messages.map((result) => <div><div style={{ display: 'flex', marginTop: 10, cursor: 'pointer' }}><img src="file:///F:/Kiruba%20SDCard/Removable%20Disk/DCIM/Camera/IMG_20151229_182829.jpg" alt="Avatar" className="avatar"></img><div style={{ backgroundColor: 'bisque', borderRadius: '10px 10px 10px 10px' }}><p>
+                        <div dangerouslySetInnerHTML={{ __html: this.state.hrefTag }}></div>
+                    </p>
                     </div></div>
                         <span style={{ fontSize: '12px', padding: '0px 46px 0px' }}>{result.time}</span></div>
                     ) : null}
+
+                    {/* {this.state.data !== '' ? <div>{this.state.data.map((Id)=>Id.id)}</div> : null } */}
                 </div>
 
-                {this.state.signOut=== true ? <div className='signOutDiv'><div><div style={{cursor:'pointer'}}>Settings</div><br/>
-                    <div style={{cursor:'pointer'}}>Change Password</div><br/>
-                    <button style={{cursor:'pointer'}} onClick={this.loginPage}>Signout</button><br/>
-                    </div>
-                    </div> : null}
+                {this.state.signOut === true ? <div className='signOutDiv'><div><div style={{ cursor: 'pointer' }}>Settings</div><br />
+                    <div style={{ cursor: 'pointer' }}>Change Password</div><br />
+                    <button style={{ cursor: 'pointer' }} onClick={this.loginPage}>Signout</button><br />
+                </div>
+                </div> : null}
 
 
                 {this.state.emoji === true ? <div className='emojiDiv'>{this.state.emojiS.map((res) => <span id='emojiId' onClick={this.emojiText}>{String.fromCodePoint(res)}</span>)}</div> : null}
-                <button style={{
-                    position: 'fixed', left: '19%',
-                    top: '575px',
-                    zIndex: 1,
-                    borderRadius: '25px 25px 25px 25px'
-                }} onClick={this.createEmoji}>{String.fromCodePoint(0x1F601)}</button>
                 <div style={{
                     position: 'fixed',
                     top: '92%',
                     left: '22%'
                 }}>
-                    <input type='textarea' ref={this.chatRef} className='textAreaDiv' placeholder='Enter your Msg' onChange={this.sendText} value={this.state.sendText} />
+                    <button style={{
+                        position: 'fixed', left: '21%',
+                        zIndex: 1,
+                        borderRadius: '25px 25px 25px 25px',
+                        borderStyle: 'none'
+                    }} onClick={this.createEmoji}>{String.fromCodePoint(0x1F601)}</button>
+                    <input type='textarea' ref={this.chatRef} className='textAreaDiv' placeholder='Whats on your Mind' onChange={this.sendText} value={this.state.sendText} />
                     <button className='sendButtonDiv' onClick={this.sendMessage}>Send</button>
-
-
                 </div>
+
             </div>
         )
     }

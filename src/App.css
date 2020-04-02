@@ -71,18 +71,19 @@
   position: fixed;
     height: calc(100vh - 86px);
     overflow: auto;
-    left: 5%;
+    left: 74px;
     top: 140px;
-    width: 13%;
+    width: 12%;
 }
 
 .sendButtonDiv {
   position: fixed;
-    left: 94%;
+    left: 96%;
     border-top-style: none;
     border-left-style: none;
     border-right-style: none;
     outline: none;
+    margin-top: 2px;
 }
 
 .textAreaDiv{
@@ -91,15 +92,16 @@
   border-left-style: none;
   border-top-style: none;
   border-bottom-style: groove;
-  display: flex;
   outline: none;
+  left: 24%;
+  margin-top: 3px;
 }
 
 .signOutDiv{
   position: fixed;
   padding: 13px;
     right: 3%;
-    background-color: cornflowerblue;
+    background-color: bisque;
     top: 11%;
     width: calc(100vh - 450px);
     height: 22%;
@@ -110,9 +112,9 @@
   position: fixed;
     width: 20%;
     height: 16%;
-    background-color: beige;
+    background-color: sandybrown;
     left: 21%;
-    top: 79%;
+    top: 75%;
     cursor : pointer;
     overflow: auto;
 }

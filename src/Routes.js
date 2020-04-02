@@ -7,16 +7,23 @@ import Chat from './Chat';
 import LoginPage from './LoginPage';
 
 
-class Routes extends React.Component{
-    render(){
-        return(
-                <HashRouter>
-                    <Switch>
-                        <Route exact path='/login' component={LoginPage}/>
-                        <Route path='/chat' component={Chat}/>
-                        <Route path='/kiruba' component={Kiruba}/>
-                    </Switch>
-                </HashRouter>
+class Routes extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: ''
+        }
+    }
+    render() {
+        return (
+            <HashRouter>
+                <Switch>
+                    <Route exact path='/login' component={LoginPage} />
+                    <Route path='/chat' component={Chat} />
+           
+                    <Route path='/kiruba' component={Kiruba} />
+                </Switch>
+            </HashRouter>
         )
     }
 }

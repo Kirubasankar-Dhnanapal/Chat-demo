@@ -11,7 +11,8 @@ class LoginPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            loginFlag: false
+            loginFlag: false,
+            data : ''
         }
         this.userRef = React.createRef();
         this.passwordRef = React.createRef();
